@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZORVANE® — Dark Fits. Bold Energy.</title>
+<meta name="description" content="ZORVANE® — Dark fits. Bold energy. Discover Drop 001.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --bg:#050505; --panel:#0c0c0c; --text:#f4f4f1; --muted:#8d8d8a;
+  --line:#222; --accent:#d8d8d3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.nav{
+  position:fixed;top:0;left:0;width:100%;z-index:20;display:flex;align-items:center;
+  justify-content:space-between;padding:22px 4vw;border-bottom:1px solid transparent;
+  transition:.3s;background:linear-gradient(to bottom,rgba(5,5,5,.85),transparent)
+}
+.nav.scrolled{background:rgba(5,5,5,.92);backdrop-filter:blur(14px);border-color:var(--line)}
+.logo{font-size:19px;font-weight:900;letter-spacing:.13em}
+.navlinks{display:flex;gap:32px;font-size:11px;text-transform:uppercase;letter-spacing:.15em}
+.navlinks a{opacity:.75;transition:.2s}.navlinks a:hover{opacity:1}
+.actions{display:flex;gap:18px;font-size:11px;text-transform:uppercase;letter-spacing:.12em}
+.cart-btn{border:0;background:none;color:var(--text);cursor:pointer}
+.hero{
+  min-height:100vh;display:flex;align-items:flex-end;padding:0 5vw 7vw;position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 70% 38%,#30302d 0,#171715 18%,transparent 42%),
+    linear-gradient(115deg,#050505 25%,#11110f 60%,#060606 100%);
+}
+.hero:before{content:"";position:absolute;inset:0;opacity:.16;background-image:linear-gradient(110deg,transparent 48%,#fff 49%,transparent 50%);background-size:7px 100%}
+.hero-content{position:relative;z-index:2;max-width:850px}
+.eyebrow{text-transform:uppercase;font-size:10px;letter-spacing:.3em;color:#aaa;margin-bottom:24px}
+.hero h1{font-size:clamp(62px,11vw,170px);line-height:.82;letter-spacing:-.08em;font-weight:900}
+.hero h1 span{display:block;color:#aaa}
+.hero p{margin-top:28px;color:#aaa;font-size:14px;letter-spacing:.03em}
+.cta{display:inline-flex;align-items:center;gap:30px;margin-top:34px;background:var(--text);color:#080808;padding:16px 22px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.cta:hover{background:#fff}
+.section{padding:110px 5vw}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:38px}
+.kicker{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:#777}
+.section h2{font-size:clamp(36px,5vw,72px);letter-spacing:-.06em;line-height:.95}
+.view{font-size:10px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid #555;padding-bottom:7px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.product{background:var(--panel);cursor:pointer}
+.product-img{aspect-ratio:4/5;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:
+  radial-gradient(circle at 50% 35%,#292927,#111 47%,#090909 75%)}
+.product-img:after{content:"";width:58%;height:72%;border:1px solid #343432;position:absolute;transform:rotate(-6deg)}
+.product-img .tee{position:relative;z-index:1;width:48%;height:58%;background:#161616;box-shadow:0 25px 50px #000;border:1px solid #292929}
+.product-img .tee:before{content:"ZV";position:absolute;top:39%;left:0;width:100%;text-align:center;font-size:22px;font-weight:900;letter-spacing:.08em;color:#bbb}
+.product:nth-child(2) .product-img{background:radial-gradient(circle at 50% 30%,#353532,#111 50%,#070707)}
+.product:nth-child(3) .product-img{background:radial-gradient(circle at 55% 35%,#242422,#0e0e0e 55%,#050505)}
+.product:nth-child(4) .product-img{background:radial-gradient(circle at 50% 35%,#3a3a37,#121210 50%,#050505)}
+.info{padding:17px 16px 20px;display:flex;justify-content:space-between;gap:15px}
+.info h3{font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.info p{font-size:11px;color:#777;margin-top:6px}
+.price{font-size:12px;white-space:nowrap}
+.manifesto{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;background:#090909;border-block:1px solid var(--line)}
+.manifesto .inner{max-width:1000px}
+.manifesto h2{font-size:clamp(42px,8vw,105px);line-height:.9;letter-spacing:-.075em}
+.manifesto p{margin:30px auto 0;max-width:540px;color:#888;font-size:13px;line-height:1.8}
+.editorial{display:grid;grid-template-columns:1.3fr .7fr;min-height:75vh}
+.editorial .visual{background:linear-gradient(140deg,#282824,#0b0b0b 62%);min-height:500px;position:relative;overflow:hidden}
+.visual:before{content:"ZORVANE";position:absolute;font-size:clamp(60px,12vw,180px);font-weight:900;letter-spacing:-.09em;left:-4%;top:42%;transform:rotate(-8deg);color:#151513}
+.editorial-copy{padding:8vw 7vw;background:#0a0a0a;display:flex;flex-direction:column;justify-content:center}
+.editorial-copy h2{font-size:clamp(40px,6vw,82px);line-height:.9;letter-spacing:-.07em}
+.editorial-copy p{margin-top:25px;color:#888;line-height:1.7;font-size:13px}
+.newsletter{padding:100px 5vw;border-top:1px solid var(--line);text-align:center}
+.newsletter h2{font-size:clamp(36px,5vw,70px);letter-spacing:-.06em}
+.newsletter p{color:#777;font-size:13px;margin:18px 0 28px}
+.form{max-width:480px;margin:auto;display:flex;border-bottom:1px solid #444}
+.form input{flex:1;background:none;border:0;outline:0;color:white;padding:15px 4px;font-size:12px}
+.form button{background:none;border:0;color:white;text-transform:uppercase;letter-spacing:.15em;font-size:10px;font-weight:800;cursor:pointer}
+footer{padding:50px 5vw 30px;border-top:1px solid var(--line);display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+footer .brand{font-size:20px;font-weight:900;letter-spacing:.13em}
+footer p{color:#666;font-size:11px;line-height:1.7;margin-top:13px;max-width:260px}
+footer h4{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#666;margin-bottom:15px}
+footer a{display:block;font-size:11px;margin:10px 0;color:#aaa}
+.copy{grid-column:1/-1;border-top:1px solid #191919;padding-top:20px;color:#555;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.drawer{position:fixed;right:-430px;top:0;width:min(430px,100%);height:100vh;background:#0b0b0b;z-index:40;border-left:1px solid #292929;padding:28px;transition:.35s;display:flex;flex-direction:column}
+.drawer.open{right:0}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid #222}
+.close{background:none;border:0;color:#aaa;cursor:pointer;font-size:20px}
+.drawer-body{flex:1;padding-top:25px;color:#777;font-size:12px}
+.drawer-foot{border-top:1px solid #222;padding-top:20px}
+.checkout{width:100%;border:0;background:#eee;color:#050505;padding:16px;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);background:#eee;color:#050505;padding:13px 18px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:0;pointer-events:none;transition:.3s;z-index:60}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:800px){
+  .nav{padding:18px 5vw}.navlinks{display:none}.actions{gap:12px}
+  .hero{min-height:88vh;padding:0 6vw 13vw}.hero p{max-width:320px}
+  .section{padding:75px 5vw}.section-head{display:block}.section-head .view{display:inline-block;margin-top:18px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:7px}.info{display:block}.price{display:block;margin-top:10px}
+  .editorial{grid-template-columns:1fr}.editorial .visual{min-height:55vh}.editorial-copy{padding:70px 8vw}
+  footer{grid-template-columns:1fr 1fr}.brand-col{grid-column:1/-1}.copy{grid-column:1/-1}
+}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="logo" href="#">ZORVANE®</a>
+  <nav class="navlinks"><a href="#shop">Shop</a><a href="#drop">Drop 001</a><a href="#about">About</a><a href="#journal">Journal</a></nav>
+  <div class="actions"><a href="#search">Search</a><button class="cart-btn" id="cartBtn">Bag (0)</button></div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">ZORVANE® / EST. 2026</div>
+    <h1>DARK<br><span>FITS.</span></h1>
+    <p>Bold energy. Designed for the ones who stand apart.</p>
+    <a class="cta" href="#shop">Shop Drop 001 <span>↗</span></a>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="section-head">
+    <div><div class="kicker">The first statement</div><h2>DROP 001</h2></div>
+    <a class="view" href="#shop">View collection →</a>
+  </div>
+  <div class="grid">
+    <article class="product" data-name="ZV-001 / The Origin" data-price="1499">
+      <div class="product-img"><div class="tee"></div></div>
+      <div class="info"><div><h3>ZV-001 / The Origin</h3><p>Heavyweight oversized tee</p></div><div class="price">₹1,499</div></div>
+    </article>
+    <article class="product" data-name="ZV-002 / After Dark" data-price="1699">
+      <div class="product-img"><div class="tee"></div></div>
+      <div class="info"><div><h3>ZV-002 / After Dark</h3><p>Signature graphic tee</p></div><div class="price">₹1,699</div></div>
+    </article>
+    <article class="product" data-name="ZV-003 / Shadow" data-price="1799">
+      <div class="product-img"><div class="tee"></div></div>
+      <div class="info"><div><h3>ZV-003 / Shadow</h3><p>Boxy heavyweight tee</p></div><div class="price">₹1,799</div></div>
+    </article>
+    <article class="product" data-name="ZV-004 / Nocturne" data-price="2499">
+      <div class="product-img"><div class="tee"></div></div>
+      <div class="info"><div><h3>ZV-004 / Nocturne</h3><p>Premium oversized hoodie</p></div><div class="price">₹2,499</div></div>
+    </article>
+  </div>
+</section>
+
+<section class="manifesto" id="about">
+  <div class="inner">
+    <div class="kicker">The ZORVANE® code</div>
+    <h2>NO NOISE.<br>JUST PRESENCE.</h2>
+    <p>ZORVANE was created around a simple idea — clothing should carry presence. Minimal silhouettes. Dark tones. Bold details.</p>
+  </div>
+</section>
+
+<section class="editorial" id="drop">
+  <div class="visual"></div>
+  <div class="editorial-copy">
+    <div class="kicker">Drop 001 / The Origin</div>
+    <h2>BUILT<br>AFTER<br>DARK.</h2>
+    <p>The first ZORVANE collection introduces the visual language: heavyweight fabrics, restrained graphics and a silhouette made to move with confidence.</p>
+    <a class="cta" href="#shop">Explore the drop <span>↗</span></a>
+  </div>
+</section>
+
+<section class="newsletter" id="journal">
+  <div class="kicker">Private access</div>
+  <h2>ENTER THE WORLD.</h2>
+  <p>Join the ZORVANE list for early access to future drops.</p>
+  <form class="form" id="form"><input type="email" placeholder="YOUR EMAIL ADDRESS" required><button>Join →</button></form>
+</section>
+</main>
+
+<footer>
+  <div class="brand-col"><div class="brand">ZORVANE®</div><p>DARK FITS. BOLD ENERGY.<br>Independent fashion label.</p></div>
+  <div><h4>Shop</h4><a href="#shop">All products</a><a href="#drop">Drop 001</a></div>
+  <div><h4>Support</h4><a href="#">Size guide</a><a href="#">Shipping</a><a href="#">Returns</a></div>
+  <div><h4>Connect</h4><a href="#">Instagram</a><a href="#">Contact</a></div>
+  <div class="copy">© 2026 ZORVANE®. All rights reserved.</div>
+</footer>
+
+<aside class="drawer" id="drawer">
+  <div class="drawer-head"><strong>YOUR BAG</strong><button class="close" id="close">×</button></div>
+  <div class="drawer-body" id="bagBody">Your bag is empty.</div>
+  <div class="drawer-foot"><button class="checkout">Checkout</button></div>
+</aside>
+<div class="toast" id="toast">Added to bag</div>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30));
+const drawer=document.getElementById('drawer'), cartBtn=document.getElementById('cartBtn'), close=document.getElementById('close');
+let bag=[];
+function renderBag(){
+  cartBtn.textContent=`Bag (${bag.length})`;
+  document.getElementById('bagBody').innerHTML=bag.length
+    ? bag.map((x,i)=>`<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #1d1d1d;color:#ddd"><span>${x.name}</span><span>₹${Number(x.price).toLocaleString('en-IN')}</span></div>`).join('')
+    : 'Your bag is empty.';
+}
+cartBtn.onclick=()=>drawer.classList.add('open'); close.onclick=()=>drawer.classList.remove('open');
+document.querySelectorAll('.product').forEach(p=>p.addEventListener('click',()=>{
+  bag.push({name:p.dataset.name,price:p.dataset.price}); renderBag(); drawer.classList.add('open');
+  const t=document.getElementById('toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1300);
+}));
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault(); e.target.reset();
+  const t=document.getElementById('toast'); t.textContent='You’re on the list'; t.classList.add('show'); setTimeout(()=>{t.classList.remove('show');t.textContent='Added to bag'},1800);
+});
+renderBag();
+</script>
+</body>
+</html>
